@@ -4,23 +4,43 @@
 - Practice fundamentals
 
 ## What Did I Learn
-- `let`: used to create a variable
-- e.g.
+
+### Variables
+- `let`: keyword used to create a variable
 ```rust
     let apples = 5
 ```
 - variables are immutable by default, similar to a `const` (constant) in javascript
 - immutable means the value give to the variable won't change once it is set
-- `mut`: makes a vaiable mutable
-- e.g. 
+- `mut`: makes a vaiable mutable 
 ```rust
     let apples = 5      // immutable (cannot be changed later)
     let mut apples = 5  // mutable (can be changed later)
 ```
 - `::` syntax indicates that `new` is an associated function of `String`
-- i.e. `::` is similar to the `.` notation in many other languages, however, in rust, it is specfically to denote that an Object-has-function or `Object::function`
-- can still use `std::io` library without doing initial import at top of file
-- e.g. using `std::io::stdin().read_line(&mut guess)` returns an instance of `std::io::Stdin`
+- `::` is similar to the `.` notation in many other languages
+- in rust, `::` specfically denotes `Object-has-function` or `Object::function`
+- in this case, we are simply defining `guess` to be a new `String` object
+```rust
+    let mut guess = String::new();
+```
+
+### Imports
+- can use `std::io` library without doing initial import at top of file
+- initial import makes it more explicit before running fn logic, e.g.
+```rust
+    use std::io;
+
+    io::stdin()
+            .read_line(&mut guess)
+            .expect("Failed to read line");
+```
+- requires explicit declaration in the code 
+```rust
+    std::io::stdin().read_line(&mut guess)
+```
+- using the more explicity call returns an instance of `std::io::stdin`
+
 - ampersand `&` indicates that the argument in the method call is a `reference`
 - `&` lets multiple parts of the same code access one piece of data without needing to copy the data into memory multiple times
 - refereces are also immutable by default thus why we use `&mut guess`
